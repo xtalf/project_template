@@ -33,6 +33,7 @@ pipeline {
 //        stage("docker push") {
 //            steps {
 //                echo " ============== start pushing image =================="
+                  sh 'id'
 //                sh '''
 //                docker push semaev/toolbox:latest
 //                '''
