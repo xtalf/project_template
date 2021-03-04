@@ -26,6 +26,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('docker/toolbox') {
+                    sh 'id'
                 	sh 'docker build -t semaev/toolbox:latest . '
                 }
             }
@@ -33,7 +34,6 @@ pipeline {
 //        stage("docker push") {
 //            steps {
 //                echo " ============== start pushing image =================="
-                  sh 'id'
 //                sh '''
 //                docker push semaev/toolbox:latest
 //                '''
