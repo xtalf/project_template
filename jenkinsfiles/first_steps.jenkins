@@ -33,5 +33,9 @@ pipeline {
                 sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@${IP_HOST_AGENT_1} \'id\''
             }
         }
+        stage("Print ENV") {
+            steps {
+                sh 'printenv'
+            }
     }
 }
