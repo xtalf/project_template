@@ -25,12 +25,12 @@ pipeline {
         }
         stage("Second step") {
             steps {
-                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@{IP_HOST_AGENT_1} \'uptime\''
+                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@${IP_HOST_AGENT_1} \'uptime\''
             }
         }
         stage("Third step") {
             steps {
-                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@{IP_HOST_AGENT_1} \'id\''
+                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@${IP_HOST_AGENT_1} \'id\''
             }
         }
     }
