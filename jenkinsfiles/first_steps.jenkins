@@ -14,22 +14,23 @@ pipeline {
     environment {
         SSH_KEY_PATH = "/var/lib/jenkins/ssh_keys/agent1.key"
         SSH_USERNAME = "jenkins"
+        IP_HOST_AGENT_1 = "192.168.60.5"
     }
     
     stages {
         stage("First step") {
             steps {
-                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@192.168.60.5 \'hostname\''
+                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@${IP_HOST_AGENT_1} \'hostname\''
             }
         }
         stage("Second step") {
             steps {
-                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@192.168.60.5 \'uptime\''
+                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@{IP_HOST_AGENT_1} \'uptime\''
             }
         }
         stage("Third step") {
             steps {
-                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@192.168.60.5 \'id\''
+                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@{IP_HOST_AGENT_1} \'id\''
             }
         }
     }
