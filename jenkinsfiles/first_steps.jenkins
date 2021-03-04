@@ -21,5 +21,10 @@ pipeline {
                 sh 'ssh -i /var/lib/jenkins/ssh_keys/agent1.key jenkins@192.168.60.5 \'uptime\''
             }
         }
+        stage("Third step") {
+            steps {
+                sh 'ssh -i /var/lib/jenkins/ssh_keys/agent1.key jenkins@192.168.60.5 \'id\''
+            }
+        }
     }
 }
