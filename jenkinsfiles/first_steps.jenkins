@@ -10,20 +10,26 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
     }
+    
+    environment {
+        SSH_KEY_PATH = "/var/lib/jenkins/ssh_keys/agent1.key"
+        SSH_USERNAME = "jenkins"
+    }
+    
     stages {
         stage("First step") {
             steps {
-                sh 'ssh -i /var/lib/jenkins/ssh_keys/agent1.key jenkins@192.168.60.5 \'hostname\''
+                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@192.168.60.5 \'hostname\''
             }
         }
         stage("Second step") {
             steps {
-                sh 'ssh -i /var/lib/jenkins/ssh_keys/agent1.key jenkins@192.168.60.5 \'uptime\''
+                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@192.168.60.5 \'uptime\''
             }
         }
         stage("Third step") {
             steps {
-                sh 'ssh -i /var/lib/jenkins/ssh_keys/agent1.key jenkins@192.168.60.5 \'id\''
+                sh 'ssh -i ${SSH_KEY_PATH} ${SSH_USERNAME}@192.168.60.5 \'id\''
             }
         }
     }
